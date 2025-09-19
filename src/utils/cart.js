@@ -11,52 +11,46 @@ export function loadCart(){
     return cart
 }
 
-export function addToCart(product, quantity){
-    let cart = loadCart()
+export function addToCart(product, quantity) {
+    let cart = loadCart();
 
     const existingItemIndex = cart.findIndex(
-        (item)=>{
-            return item.productID == product.productID
-        }
-    )
+        (item) => item.productId == product.productId
+    );
 
-    if(existingItemIndex == -1){
+    if (existingItemIndex === -1) {
         // item not in cart
-
-        if(quantity<1){
-            console.log("Quantity must be at least 1")
-            return
+        if (quantity < 1) {
+            console.log("Quantity must be at least 1");
+            return;
         }
 
         const cartItem = {
-            productID: product.productID,
+            productId: product.productId,
             name: product.name,
             price: product.price,
             labelledPrice: product.labelledPrice,
             quantity: quantity,
-            image: product.images[0]
+            image: product.images[0],
+        };
+        cart.push(cartItem);
+    } else {
+        // item already in cart
+        const existingItem = cart[existingItemIndex];
+        let newQuantity = existingItem.quantity + quantity;
+
+        // clamp at min 1
+        if (newQuantity < 1) {
+            newQuantity = 1;
         }
-        cart.push(cartItem)
 
-    }else{
-        
-        const existingItem = cart[existingItemIndex]
-
-        const newQuantity = existingItem.quantity + quantity
-
-        if(newQuantity<1){
-            cart = cart.filter(
-                (item)=>{
-                    return item.productID != product.productID
-                }
-            )
-        }else{
-            cart[existingItemIndex].quantity = newQuantity
-        }
+        cart[existingItemIndex].quantity = newQuantity;
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart))
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+
 export function getTotal(){
 
     const cart = loadCart()

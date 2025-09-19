@@ -14,9 +14,9 @@ export default function ProductCard(props) {
 				</div>:
 				<p className="text-lg text-accent font-semibold">LKR {product.price.toFixed(2)}</p>
 			}
-			<p className="text-sm text-secondary/70">{product.productID}</p>
+			<p className="text-sm text-secondary/70">{product.productId}</p>
 			<p className="text-sm text-secondary/70">{product.category}</p>
-			<Link to={"/overview/"+product.productID} className="w-full h-[30px] mt-[5px] border text-center border-accent text-accent hover:bg-accent hover:text-white">
+			<Link to={"/overview/"+product.productId} className="w-full h-[30px] mt-[5px] border text-center border-accent text-accent hover:bg-accent hover:text-white">
 				View Product
 			</Link>
 			

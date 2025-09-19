@@ -24,7 +24,7 @@ export default function CartPage() {
                         <div className="w-[200px] h-full  flex flex-col pl-[5px] pt-[10px] ">
                             <h1 className=" font-semibold text-lg w-full text-wrap">{item.name}</h1>
                             {/* productID */}
-                            <span className="text-sm text-secondary ">{item.productID}</span>
+                            <span className="text-sm text-secondary ">{item.productId}</span>
                         </div>
                         <div className="w-[100px] h-full flex flex-col justify-center items-center ">
                             <CiCircleChevUp className="text-3xl" onClick={

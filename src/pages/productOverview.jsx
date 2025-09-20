@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { Link, useParams } from "react-router-dom";
 import { Loader } from "../components/loader";
 import ImageSlider from "../components/imageSlider";
-import { addToCart, loadCart } from "../utils/cart";
+import { addToCart } from "../utils/cart";
 
 export default function ProductOverview() {
 	const params = useParams();
@@ -33,7 +33,7 @@ export default function ProductOverview() {
                         <ImageSlider images={product.images}/>
                     </div>
 					<div className="w-[50%] h-full flex flex-col  items-center gap-4 p-10">
-                        <span className="">{product.productID}</span>
+                        <span className="">{product.productId}</span>
 						<h1 className="text-2xl font-bold text-center">{product.name}
                             {
                                 product.altNames.map(
@@ -66,7 +66,7 @@ export default function ProductOverview() {
 							}}>Add to Cart</button>
                             <Link to="/checkout" state={[{
 								image : product.images[0],
-								productID : product.productID,
+								productId : product.productId,
 								name : product.name,
 								price : product.price,
 								labelledPrice : product.labelledPrice,
